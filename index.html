@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang = "en">
     <head>
@@ -19,9 +20,12 @@
 
         <!--navbar-->
         <nav class="navbar navbar-expand-lg bg-white shadow-sm">
-            <div class="container">
+            <div class="container d-flex justify-content-between align-items-center">
+                <!-- Left Side -->
                 <a class="navbar-brand fw-bold" href="#">NovaCart</a>
+                <!-- Right Side -->
                 <div class="d-flex align-items-center gap-3">
+                    <div id="user-area"></div>
                     <select id="category" class="form-select form-select-sm">
                         <option value="all">All Categories</option>
                         <option value="Electronics">Electronics</option>
@@ -38,13 +42,16 @@
             </div>
         </nav>
 
+
         <!-- Hero Section -->
-        <section class="hero-local text-center">
+        <section class="hero text-center text-white">
             <div class="container">
-                <h2>Discover Trending Products</h2>
-                    <p>Quality items </p>
+                <h1>Big Sale is Live 🔥</h1>
+                <p class="tagline">Up to 50% Off on Trending Products</p>
+                <button class="btn btn-warning mt-3">Shop Now</button>
             </div>
         </section>
+
 
         <!--products-->
         <div class="container mt-5" id="products">

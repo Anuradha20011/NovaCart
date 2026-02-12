@@ -1,3 +1,4 @@
+
 class Cart {
     constructor() {
         this.items = JSON.parse(localStorage.getItem("cart")) || [];
@@ -32,6 +33,8 @@ class Cart {
 }
 
 const cart = new Cart();
+
+
 
 const products = [
 
@@ -206,6 +209,10 @@ function toggleCart() {
 
 function renderCartItems() {
     const panel = document.getElementById("cart-items-panel");
+
+    // 👇 agar element page par nahi hai to function band
+    if (!panel) return;
+
     panel.innerHTML = "";
 
     if (cart.items.length === 0) {
@@ -215,26 +222,78 @@ function renderCartItems() {
 
     cart.items.forEach(item => {
         panel.innerHTML += `
-            <div class="d-flex justify-content-between mb-2">
-                <span>${item.name} x ${item.quantity}</span>
-                <span>₹${item.price * item.quantity}</span>
+            <div class="d-flex align-items-center mb-3 border-bottom pb-2">
+                <img src="${item.image}" 
+                     width="60" height="60"
+                     style="object-fit:cover; border-radius:8px; margin-right:10px;">
+                <div class="flex-grow-1">
+                    <strong>${item.name}</strong><br>
+                    ₹${item.price} x ${item.quantity}<br>
+                    <small class="text-success">
+                        Subtotal: ₹${item.price * item.quantity}
+                    </small>
+                </div>
+                <div class="text-end">
+                    <button onclick="increase(${item.id})" 
+                        class="btn btn-sm btn-success mb-1">+</button><br>
+                    <button onclick="decrease(${item.id})" 
+                        class="btn btn-sm btn-warning mb-1">-</button><br>
+                    <button onclick="removeItem(${item.id})" 
+                        class="btn btn-sm btn-danger">❌</button>
+                </div>
             </div>
         `;
     });
 }
 
+
+
+
 function updateUI() {
     let total = cart.getTotal();
     let finalTotal = total - discountAmount;
+    const cartTotal = document.getElementById("cart-total");
+    const cartCount = document.getElementById("cart-count");
 
-    document.getElementById("cart-total").innerText = finalTotal;
-    document.getElementById("cart-total").innerText = cart.getCount();
+    if (cartTotal) 
+        cartTotal.innerText = finalTotal;
+    if (cartCount) 
+        cartCount.innerText = cart.getCount();
+    renderCartItems();}
 
-    renderCartItems();
+document.addEventListener("DOMContentLoaded", function() {
+    displayProducts(products);
+    updateUI();
+    updateNavbar();
+});
 
+
+function increase(id) {
+    const item = cart.items.find(p => p.id === id);
+    item.quantity++;
+    cart.save();
+    updateUI();
 }
-displayProducts(products);
-updateUI();
+
+function decrease(id) {
+    const item = cart.items.find(p => p.id === id);
+
+    if (item.quantity > 1) {
+        item.quantity--;
+    } else {
+        cart.remove(id);
+    }
+
+    cart.save();
+    updateUI();
+}
+
+function removeItem(id) {
+    cart.remove(id);
+    cart.save();
+    updateUI();
+}
+
 
 //wishlist
 let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
@@ -265,7 +324,10 @@ updateWishlistUI();
 //coupon
 let discountAmount = 0;
 function applyCoupon() {
-    const code = document.getElementById("coupon").value;
+    const couponInput= document.getElementById("coupon");
+    if (!couponInput) 
+        return;
+    const code = couponInput.value;
 
     if (code === "SAVE10") {
         discountAmount = cart.getTotal() * 0.10;
@@ -289,23 +351,68 @@ document.getElementById("search").addEventListener("input", e => {
 });
 
 // sort
-document.getElementById("sort").addEventListener("change", e => {
-    let sorted = [...products];
-    if (e.target.value === "low") {
-        sorted.sort((a, b) => a.price - b.price);
-    } else if (e.target.value === "high") {
-        sorted.sort((a, b) => b.price - a.price);
-    }
-    displayProducts(sorted);
-});
+const sortSelect = document.getElementById("sort");
+if (sortSelect) {
+    sortSelect.addEventListener("change", e => {
+        let sorted = [...products];
+        if (e.target.value === "low") {
+            sorted.sort((a, b) => a.price - b.price);
+        } else if (e.target.value === "high") {
+            sorted.sort((a, b) => b.price - a.price);
+        }
+        displayProducts(sorted);
+    });
+}
+
 
 // category filter
-document.getElementById("category")
-.addEventListener("change", e => {
-    if (e.target.value === "all") {
-        displayProducts(products);
-    } else {
-        const filtered = products.filter(p => p.category === e.target.value);
-        displayProducts(filtered);
+const categorySelect = document.getElementById("category");
+if (categorySelect) {
+    categorySelect.addEventListener("change", e => {
+        if (e.target.value === "all") {
+            displayProducts(products);
+        } else {
+            const filtered = products.filter(p => p.category === e.target.value);
+            displayProducts(filtered);
+        }
+    });
+}
+
+
+// checkout
+function checkout(){
+    const isLoggedIn = localStorage.getItem("loggedIn");
+
+    if(isLoggedIn){
+        window.location.href = "checkout.html";
+    }else{
+        alert("Please login first 🔒");
+        window.location.href = "login.html";
     }
-});
+}
+function updateNavbar(){
+    const userArea = document.getElementById("user-area");
+    const user = JSON.parse(localStorage.getItem("user"));
+    const isLoggedIn = localStorage.getItem("loggedIn");
+
+    if(isLoggedIn && user){
+        userArea.innerHTML = `
+            <span class="me-2">Hi, ${user.name} 👋</span>
+            <button class="btn btn-sm btn-danger" onclick="logout()">Logout</button>
+        `;
+    }else{
+        userArea.innerHTML = `
+            <a href="login.html" class="btn btn-outline-primary btn-sm">Login</a>
+        `;
+    }
+}
+
+function logout(){
+    localStorage.removeItem("loggedIn");
+    alert("Logged out successfully 👋");
+    location.reload();
+}
+
+
+
+
