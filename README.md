@@ -1,18 +1,22 @@
-# NovaCart – Full Stack E-Commerce Web Application
+# 🛒 NovaCart – Full Stack E-Commerce Web Application
+
 NovaCart is a modern, responsive e-commerce web application built using  
-HTML, CSS, Bootstrap, JavaScript (ES6), and Node.js (Backend Setup).
+**HTML, CSS, Bootstrap, JavaScript (ES6), and Node.js (Backend Setup)**.
 
 This project demonstrates frontend architecture, state management, Object-Oriented Programming (OOP), and basic backend initialization.
 
 ---
 
-## Live Demo
-https://anuradha20011.github.io/NovaCart/
+## 🌐 Live Demo
+
+🔗 https://anuradha20011.github.io/NovaCart/
 
 ---
 
-## Project Overview
+## 🚀 Project Overview
+
 NovaCart simulates a real-world online shopping platform where users can:
+
 - Browse 20+ dynamic products
 - Search, filter, and sort products
 - View product details in a modal popup
@@ -28,9 +32,9 @@ Cart and wishlist data persist using **LocalStorage**, ensuring data remains aft
 
 ---
 
-## Core Features
+## ✨ Core Features
 
-###  Product System
+### 🛍 Product System
 - 20+ products with images and descriptions
 - Dynamic discount percentage calculation
 - Star rating display
@@ -38,7 +42,7 @@ Cart and wishlist data persist using **LocalStorage**, ensuring data remains aft
 - Price sorting (Low to High / High to Low)
 - Search functionality
 
-###  Cart System (OOP-Based)
+### 🛒 Cart System (OOP-Based)
 - Implemented using JavaScript Class
 - Add / Remove items
 - Increase / Decrease quantity
@@ -46,22 +50,22 @@ Cart and wishlist data persist using **LocalStorage**, ensuring data remains aft
 - Sliding cart side panel
 - LocalStorage persistence
 
-###  Wishlist System
+### ❤️ Wishlist System
 - Add / Remove favorite products
 - Stored using LocalStorage
 
-###  Coupon System
+### 🎟 Coupon System
 - SAVE10 → 10% discount
 - SAVE20 → 20% discount
 - Dynamic discount calculation logic
 
-###  Authentication UI (Frontend Based)
+### 🔐 Authentication UI (Frontend Based)
 - Login page
 - Signup page
 - Session simulation using LocalStorage
 - Navbar updates dynamically after login
 
-###  Checkout System
+### 💳 Checkout System
 - Billing details form
 - Order summary display
 - Success confirmation page
@@ -69,13 +73,13 @@ Cart and wishlist data persist using **LocalStorage**, ensuring data remains aft
 
 ---
 
-##  Tech Stack
+## 🛠 Tech Stack
 
 ### Frontend
 - HTML5
 - CSS3
-- Bootstrap 
-- JavaScript
+- Bootstrap 5
+- JavaScript (ES6)
 - LocalStorage API
 
 ### Backend (Initialization Phase)
@@ -89,7 +93,7 @@ Cart and wishlist data persist using **LocalStorage**, ensuring data remains aft
 
 ---
 
-# JavaScript Concepts Used
+## 🧠 JavaScript Concepts Used
 
 - Object-Oriented Programming (Class, Constructor, Methods)
 - Array Methods (map, filter, reduce, sort)
@@ -101,7 +105,7 @@ Cart and wishlist data persist using **LocalStorage**, ensuring data remains aft
 
 ---
 
-## Project Structure
+## 📁 Project Structure
 
 ```
 NovaCart/
@@ -125,7 +129,7 @@ NovaCart/
 
 ---
 
-##  Learning Outcomes
+## 🎯 Learning Outcomes
 
 - Built a complete e-commerce frontend architecture
 - Implemented scalable cart logic using OOP principles
@@ -136,7 +140,7 @@ NovaCart/
 
 ---
 
-##  Future Improvements
+## 🔮 Future Improvements
 
 - Backend API integration
 - MongoDB database integration
@@ -147,7 +151,7 @@ NovaCart/
 
 ---
 
-##  Developed By
+## 👩‍💻 Developed By
 
 **Anuradha Kumari**  
 B.Tech Computer Science Student  
