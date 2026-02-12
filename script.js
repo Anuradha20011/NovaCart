@@ -216,7 +216,13 @@ function renderCartItems() {
     panel.innerHTML = "";
 
     if (cart.items.length === 0) {
-        panel.innerHTML = "<p>Your cart is empty.</p>";
+        panel.innerHTML = `
+            <div class="text-center mt-5">
+                <h6>Your cart is empty 🛒</h6>
+                <p class="text-muted">Looks like you haven’t added anything yet.</p>
+                <button class="btn btn-primary btn-sm" onclick="toggleCart()">Continue Shopping </button>
+            </div>
+        `;
         return;
     }
 
@@ -344,11 +350,17 @@ function applyCoupon() {
 }
 
 //search
-document.getElementById("search").addEventListener("input", e => {
-    const value = e.target.value.toLowerCase();
-    const filtered = products.filter(p => p.name.toLowerCase().includes(value));
-    displayProducts(filtered);
-});
+const searchInput = document.getElementById("search");
+if (searchInput) {
+    searchInput.addEventListener("input", e => {
+        const value = e.target.value.toLowerCase();
+        const filtered = products.filter(p =>
+            p.name.toLowerCase().includes(value)
+        );
+        displayProducts(filtered);
+    });
+}
+
 
 // sort
 const sortSelect = document.getElementById("sort");
@@ -412,6 +424,13 @@ function logout(){
     alert("Logged out successfully 👋");
     location.reload();
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    const year = document.getElementById("year");
+    if (year) {
+        year.innerText = new Date().getFullYear();
+    }
+});
 
 
 

@@ -86,12 +86,7 @@ Cart and wishlist data persist using **LocalStorage**, ensuring data remains aft
 - Node.js
 - Express.js (Basic server structure created)
 
-### Deployment
-- Git
-- GitHub
-- GitHub Pages
 
----
 
 ## 🧠 JavaScript Concepts Used
 
