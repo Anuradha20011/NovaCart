@@ -1,75 +1,56 @@
 # 🛒 NovaCart – Full Stack E-Commerce Web Application
 
-NovaCart is a modern, responsive **Full Stack E-Commerce Web Application** built using:
+NovaCart is a responsive full-stack e-commerce web application built to simulate a real-world online shopping experience.
 
-HTML, CSS, Bootstrap, JavaScript (ES6), Node.js, Express.js and MySQL.
-
-This project demonstrates real-world frontend architecture, Object-Oriented Programming (OOP), REST API integration, and backend database connectivity.
-
----
-
-## 🌐 Live Demo (Frontend)
-
-Frontend (GitHub Pages):
-https://anuradha20011.github.io/NovaCart/
-
-> Note: Backend runs locally using Node.js + MySQL.
+This project demonstrates frontend architecture, Object-Oriented Programming (OOP), REST API integration, and backend database connectivity using Node.js and MySQL (local development).
 
 ---
 
 ## 🚀 Project Overview
 
-NovaCart simulates a real-world online shopping platform where users can:
+NovaCart allows users to:
 
-- Browse 20+ products (fetched from MySQL database)
+- Browse 20+ dynamic products
 - Search, filter, and sort products
-- View product details in modal popup
+- View product details in a modal popup
 - Add products to cart
-- Increase / Decrease quantity
-- Apply coupon codes
-- Add/remove wishlist items
+- Increase / Decrease product quantity
+- Apply discount coupon codes
+- Add / Remove wishlist items
 - Login / Signup (UI-based authentication)
 - Checkout and place orders
 - View order history
-- Admin can manage products and update order status
+- Admin manage products and update order status (local backend)
 
-Cart and wishlist use LocalStorage.
-Products and orders are stored in MySQL database.
+Cart and wishlist data are stored using LocalStorage, while products and orders are managed via MySQL database in the local backend setup.
 
 ---
 
 ## ✨ Core Features
 
-### 🛍 Product System (Database Connected)
-
-- Products stored in MySQL
-- Fetched using REST API (GET /products)
-- Dynamic image rendering
-- Category filtering
-- Price sorting
-- Discount percentage calculation
+### 🛍 Product System
+- 20+ products with images and descriptions
+- Dynamic discount calculation
 - Star rating display
+- Category-based filtering
+- Price sorting (Low → High / High → Low)
+- Search functionality
 
 ---
 
-### 🛒 Cart System (OOP Based)
-
-Implemented using JavaScript Class:
-
-- Add / Remove products
+### 🛒 Cart System (OOP-Based)
+- Implemented using JavaScript Class
+- Add / Remove items
 - Increase / Decrease quantity
 - Real-time total calculation
-- Coupon discount support
-- Sliding cart side panel
+- Sliding cart panel
 - LocalStorage persistence
 
 ---
 
 ### ❤️ Wishlist System
-
-- Add / Remove favorites
-- Stored in LocalStorage
-- Dynamic UI updates
+- Add / Remove favorite products
+- Stored using LocalStorage
 
 ---
 
@@ -77,37 +58,23 @@ Implemented using JavaScript Class:
 
 - SAVE10 → 10% discount
 - SAVE20 → 20% discount
-- Real-time discount calculation
+- Dynamic discount logic
 
 ---
 
 ### 🔐 Authentication (Frontend Simulation)
-
-- Login & Signup UI
-- Session simulation using LocalStorage
+- Login & Signup pages
 - Navbar updates dynamically after login
+- Session simulation using LocalStorage
 
 ---
 
-### 💳 Checkout & Orders (Backend Connected)
-
-On checkout:
-
-POST /orders
-
-Order data stored in MySQL:
-- items (JSON format)
-- total amount
-- status (Pending)
-- created_at timestamp
-
-Orders page fetches data using:
-
-GET /orders
-
-Admin can update order status:
-
-PUT /orders/:id
+### 💳 Checkout & Order Management
+- Billing details form
+- Order summary display
+- Orders stored in MySQL (local backend)
+- Order status management
+- Admin panel for product management (local setup)
 
 ---
 
@@ -121,16 +88,14 @@ PUT /orders/:id
 - Fetch API
 - LocalStorage API
 
-### Backend
+--
+
+### Backend (Local Development)
 - Node.js
 - Express.js
 - REST APIs
 - CORS
-- JSON Middleware
-
-### Database
-- MySQL
-- SQL (INSERT, SELECT, UPDATE, DELETE)
+- MySQL Database
 
 ---
 
@@ -152,52 +117,32 @@ NovaCart/
 ├── backend/
 │   ├── server.js
 │   ├── package.json
-│   ├── node_modules/
 │
 └── README.md
 
 ---
 
-## 🔄 API Endpoints
+## 🧠 Concepts Used
 
-Products:
-- GET /products
-- POST /products
-- PUT /products/:id
-- DELETE /products/:id
-
-Orders:
-- GET /orders
-- POST /orders
-- PUT /orders/:id
+- Object-Oriented Programming (Cart Class)
+- REST API Integration
+- CRUD Operations (Create, Read, Update, Delete)
+- DOM Manipulation
+- Event Handling
+- State Management
+- Database Connectivity
+- JSON Handling
 
 ---
 
-## 🎯 Learning Outcomes
+## ⚠ Note
 
-- Built a complete full-stack e-commerce application
-- Connected frontend with backend APIs
-- Integrated MySQL database with Node.js
-- Implemented OOP-based cart system
-- Managed application state
-- Practiced REST API development
-- Deployed frontend using GitHub Pages
-
----
-
-## 🔮 Future Improvements
-
-- JWT authentication
-- Payment gateway integration
-- Cloud database deployment
-- Backend hosting (Render)
-- Admin dashboard analytics
-- Role-based authentication
+The backend server and database configuration are intended for local development only. Sensitive configuration details are not included in this public repository.
 
 ---
 
 ## 👩‍💻 Developed By
 
 Anuradha Kumari  
-B.Tech Computer Science Student  
+B.Tech Computer Science  
 Aspiring Full Stack Developer
