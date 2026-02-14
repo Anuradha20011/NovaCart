@@ -1,3 +1,11 @@
+// 🔥 Auto Detect Environment
+const isLocal = window.location.hostname === "127.0.0.1" || 
+                window.location.hostname === "localhost";
+
+const API_BASE = isLocal 
+    ? "http://localhost:5000"   
+    : null;                    
+
 
 class Cart {
     constructor() {
@@ -183,22 +191,53 @@ function updateUI() {
 document.addEventListener("DOMContentLoaded", async function() {
 
     try {
-        const response = await fetch("http://localhost:5000/products");
-        products = await response.json();
+
+        if (API_BASE) {
+            // 🟢 Local mode (Full Stack)
+            const response = await fetch(`${API_BASE}/products`);
+            products = await response.json();
+        } else {
+            // 🟢 GitHub Demo Mode (Static Data)
+            products = [
+                {
+                    id: 1,
+                    name: "iPhone 15",
+                    price: 79999,
+                    oldPrice: 81999,
+                    image_url: "assets/iphone.jpg",
+                    category: "Electronics",
+                    rating: 4.5,
+                    description: "Apple smartphone latest model"
+                },
+                {
+                    id: 2,
+                    name: "Samsung Galaxy S24",
+                    price: 74999,
+                    oldPrice: 76999,
+                    image_url: "assets/samsung.jpg",
+                    category: "Electronics",
+                    rating: 4.3,
+                    description: "Samsung flagship phone"
+                }
+            ];
+        }
 
         displayProducts(products);
         updateWishlistUI();
+
     } catch (error) {
         console.error("Error loading products:", error);
     }
 
     updateUI();
     updateNavbar();
-     const year = document.getElementById("year");
-     if(year){
-        year.innerText = new DataTransfer().getFullYear();
-     }
+
+    const year = document.getElementById("year");
+    if (year) {
+        year.innerText = new Date().getFullYear();  // 👈 fixed
+    }
 });
+
 
 
 
