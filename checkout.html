@@ -56,24 +56,41 @@
                 summary.innerHTML += `
                     <hr>
                     <h4 class="text-success mt-3">Grand Total: ₹${total}</h4>
-                    `;
+                `;
             }
-            document.getElementById("checkoutForm").addEventListener("submit", function(e){
+            document.getElementById("checkoutForm").addEventListener("submit", async function(e){
                 e.preventDefault();
-                const orders = JSON.parse(localStorage.getItem("orders")) || [];
-                const newOrder = {
-                    id: "ORD" + Date.now(),
-                    items: cartItems,
-                    total: total,
-                    date: new Date().toLocaleString()
-                };
-                orders.push(newOrder);
-                localStorage.setItem("orders", JSON.stringify(orders));
-                localStorage.removeItem("cart");
-                window.location.href = "success.html";
+                if (cartItems.length === 0) {
+                    alert("Cart is empty ❌");
+                    return;
+                }
+                try {
+                    const response = await fetch("http://localhost:5000/orders", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            items: cartItems,
+                            total: total
+                        })
+                    });
+                    if (response.ok) {
+                        alert("Order Placed Successfully ✅");
+                        localStorage.removeItem("cart");
+                        window.location.href = "success.html";
+                    }
+                    else {
+                        alert("Order failed ❌");
+                    }
+                }
+                catch (error) {
+                    console.error("Order error:", error);
+                    alert("Something went wrong!");
+                }
             });
 
         </script>
-
+        
     </body>
 </html>
