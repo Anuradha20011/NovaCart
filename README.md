@@ -133,16 +133,3 @@ NovaCart/
 - Database Connectivity
 - JSON Handling
 
----
-
-## ⚠ Note
-
-The backend server and database configuration are intended for local development only. Sensitive configuration details are not included in this public repository.
-
----
-
-## 👩‍💻 Developed By
-
-Anuradha Kumari  
-B.Tech Computer Science  
-Aspiring Full Stack Developer
